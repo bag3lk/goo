@@ -1,12 +1,24 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  selector: 'app-user',
+  template: `
+    <p>Username: {{ username }}</p>
+    <p>Framework: {{ favoriteFramework }}</p>
+    <label for="framework">
+      Favorite Framework:
+      <input id="framework" type="text" [(ngModel)]="favoriteFramework" />
+    </label>
+    <button (click)="showFramework()">Show Framework</button>
+  `,
+  imports: [FormsModule],
 })
-export class AppComponent {
-  title = 'Homes';
+export class UserComponent {
+  favoriteFramework = '';
+  username = 'youngTech';
+
+  showFramework() {
+    alert(this.favoriteFramework);
+  }
 }
